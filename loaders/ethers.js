@@ -84,5 +84,11 @@ module.exports = function () {
     });
   };
 
-  return { ethers, ...ethers };
+  return {
+    ethers,
+    ...ethers,
+    ...ethers.utils,
+    ...ethers.providers,
+    ...ethers.constants,
+  };
 };
