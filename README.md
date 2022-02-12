@@ -1,6 +1,6 @@
 # ethers-repl
 
-Opens ethers.js in Node.js repl along with some objects initialized.
+Opens ethers.js in Node.js repl with Ethers.js and some providers / contracts preloaded in global.
 
 ## Installation
 
@@ -40,7 +40,7 @@ Inspection is better
 
 ```
 ethers-repl> BigNumber.from(1)
-BigNumber { _hex: 123456, _isBigNumber: true } // instead of _hex: '0x01e240'
+BigNumber { value: 123456 } // instead of _hex: '0x01e240'
 ```
 
 Also there are `dai` and `weth` contracts
