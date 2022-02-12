@@ -1,0 +1,19 @@
+{
+  "name": "ethers-repl",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Soham Zemse",
+  "license": "MIT",
+  "private": false,
+  "bin": {
+    "ethersrepl": "./cli.js",
+    "ethers-repl": "./cli.js",
+    "ethers": "./cli.js"
+  },
+  "dependencies": {
+    "fs-extra": "^10.0.0"
+  },
+  "peerDependencies": {
+    "ethers": ">=5"
+  }
+}
