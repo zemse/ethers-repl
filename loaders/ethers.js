@@ -35,57 +35,6 @@ module.exports = function () {
   //  return `Formatter: { }`;
   //};
 
-  ethers.providers.AlchemyProvider.prototype[inspect.custom] = function () {
-    return new inspect.NamedObject(this.constructor.name, {
-      network: this._network.name,
-      url: this.connection.url,
-      apiKey: this.isCommunityResource() ? "default" : this.apiKey,
-    });
-  };
-
-  ethers.providers.CloudflareProvider.prototype[inspect.custom] = function () {
-    return new inspect.NamedObject(this.constructor.name, {
-      network: this._network.name,
-      url: this.connection.url,
-    });
-  };
-
-  ethers.providers.EtherscanProvider.prototype[inspect.custom] = function () {
-    return new inspect.NamedObject(this.constructor.name, {
-      network: this._network.name,
-      baseUrl: this.baseUrl,
-      apiKey: this.isCommunityResource() ? "default" : this.apiKey,
-    });
-  };
-
-  ethers.providers.FallbackProvider.prototype[inspect.custom] = function () {
-    return new inspect.NamedObject(this.constructor.name, {
-      network: this._network.name,
-      anyNetwork: this.anyNetwork,
-      providerConfigs: this.providerConfigs,
-      quorum: this.quorum,
-    });
-  };
-
-  ethers.providers.InfuraProvider.prototype[inspect.custom] = function () {
-    return new inspect.NamedObject(this.constructor.name, {
-      network: this._network.name,
-      url: this.connection.url,
-      projectId: this.isCommunityResource() ? "default" : this.projectId,
-      projectSecret: this.projectSecret,
-    });
-  };
-
-  ethers.providers.PocketProvider.prototype[inspect.custom] = function () {
-    return new inspect.NamedObject(this.constructor.name, {
-      network: this._network.name,
-      url: this.connection.url,
-      applicationId: this.isCommunityResource() ? "default" : this.projectId,
-      applicationSecretKey: this.applicationSecretKey,
-      loadBalancer: this.loadBalancer,
-    });
-  };
-
   return {
     ethers,
     ...ethers,
