@@ -61,7 +61,32 @@ Wallet {
 }
 ```
 
+Save and load wallets
+
+```ts
+// you can list wallets which are stored at keystores.path(), can be set with env var: ETHERS_REPL_KEYSTORES_PATH
+ethers-repl> keystores.list()
+[
+  {
+    address: '0xff2b2f4d55cc37661dbd88d92b1fff8b29cda06c',
+    jsonFile: '/Users/sohamzemse/ethers-repl-wallets/0xFf2B2f4d55cC37661DbD88d92b1FFf8b29CDa06C.json'
+  }
+]
+// just pass some part of address, password and provider object
+ethers-repl> wallet = keystores.load('0xff', 'mypassword', mainnet)
+Unlocking 0xFf2B2f4d55cC37661DbD88d92b1FFf8b29CDa06C
+Wallet {
+  _isSigner: true,
+  _signingKey: [Function (anonymous)],
+  address: '0xFf2B2f4d55cC37661DbD88d92b1FFf8b29CDa06C',
+  _mnemonic: [Function (anonymous)],
+  provider: null
+}
+// it returns an ethers.Wallet which you can use as usual
+ethers-repl> await wallet.getBalance()
+BigNumber { value: "0", hex: "0x00" }
+```
+
 ## More features on TODO
 
-- Load wallets
 - Making it easy to add contracts and providers and other customisations
