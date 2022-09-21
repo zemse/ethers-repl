@@ -12,7 +12,7 @@ npm i -g ethers ethers-repl
 
 Use the command `ethers-repl` in your terminal. This should open a REPL.
 
-```
+```ts
 $ ethers-repl
 
 ethers-repl>
@@ -38,16 +38,27 @@ ethers-repl> getAddress('c21f0a4a6eb27762a218acbb05922fa5703dcf3f')
 
 Inspection is better
 
-```
+```ts
 ethers-repl> BigNumber.from(1)
 BigNumber { value: 123456 } // instead of _hex: '0x01e240'
 ```
 
 Also there are `dai` and `weth` contracts
 
-```
+```ts
 ethers-repl> await dai.balanceOf('vitalik.eth')
 BigNumber { value: "2501000000000000000000" }
+```
+
+Get a vanity wallet real quick!
+
+```ts
+ethers-repl> wallet = vanity(startsWith('dad'), 10000)
+Wallet {
+  _isSigner: true,
+  address: '0xdAd5589FA9A17f13B69a3A3a2Fff24190e22f18c',
+  provider: null
+}
 ```
 
 ## More features on TODO
