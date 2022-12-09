@@ -12,35 +12,35 @@ module.exports = function () {
     }
   };
 
-  const mainnet = new ethers.providers.StaticJsonRpcProvider(
+  const mainnet = new ethers.JsonRpcProvider(
     `https://eth-mainnet.alchemyapi.io/v2/${AL_CHEMY}`
   );
-  mainnet._ready().catch(printProviderError.bind(null, "mainnet"));
+  // mainnet._ready().catch(printProviderError.bind(null, "mainnet"));
 
-  const goerli = new ethers.providers.StaticJsonRpcProvider(
+  const goerli = new ethers.JsonRpcProvider(
     `https://eth-goerli.alchemyapi.io/v2/${AL_CHEMY}`
   );
-  goerli._ready().catch(printProviderError.bind(null, "goerli"));
+  // goerli._ready().catch(printProviderError.bind(null, "goerli"));
 
-  const arbmain = new ethers.providers.StaticJsonRpcProvider(
+  const arbmain = new ethers.JsonRpcProvider(
     `https://arb-mainnet.g.alchemy.com/v2/${AL_CHEMY}`
   );
-  arbmain._ready().catch(printProviderError.bind(null, "arbmain"));
+  // arbmain._ready().catch(printProviderError.bind(null, "arbmain"));
 
-  const opmain = new ethers.providers.StaticJsonRpcProvider(
+  const opmain = new ethers.JsonRpcProvider(
     `https://opt-mainnet.g.alchemy.com/v2/${AL_CHEMY}`
   );
-  opmain._ready().catch(printProviderError.bind(null, "opmain"));
+  // opmain._ready().catch(printProviderError.bind(null, "opmain"));
 
-  const optest = new ethers.providers.StaticJsonRpcProvider(
+  const optest = new ethers.JsonRpcProvider(
     `https://opt-goerli.g.alchemy.com/v2/${AL_CHEMY}`
   );
-  optest._ready().catch(printProviderError.bind(null, "optest"));
+  // optest._ready().catch(printProviderError.bind(null, "optest"));
 
-  const matic = new ethers.providers.StaticJsonRpcProvider(
+  const matic = new ethers.JsonRpcProvider(
     `https://polygon-mainnet.g.alchemy.com/v2/${AL_CHEMY}`
   );
-  matic._ready().catch(printProviderError.bind(null, "matic"));
+  // matic._ready().catch(printProviderError.bind(null, "matic"));
 
   // const mainnetWss = new ethers.providers.WebSocketProvider(
   //   `wss://eth-mainnet.alchemyapi.io/v2/${AL_CHEMY}`

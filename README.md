@@ -5,7 +5,7 @@ Opens ethers.js in Node.js repl with Ethers.js and some providers / contracts pr
 ## Installation
 
 ```sh
-npm i -g ethers ethers-repl
+npm i -g ethers ethers-repl@beta-exports
 ```
 
 ## Usage
@@ -22,15 +22,13 @@ You can access `ethers` here along with usual nodejs repl things.
 
 ```
 ethers-repl> ethers.version
-'ethers/5.5.4'
+'6.0.0-beta-exports.7'
 ```
 
 You can directly access utils.
 
 ```
-ethers-repl> ethers.utils.getAddress('c21f0a4a6eb27762a218acbb05922fa5703dcf3f')
-'0xC21F0a4a6EB27762A218aCbB05922fa5703dCF3f'
-ethers-repl> utils.getAddress('c21f0a4a6eb27762a218acbb05922fa5703dcf3f')
+ethers-repl> ethers.getAddress('c21f0a4a6eb27762a218acbb05922fa5703dcf3f')
 '0xC21F0a4a6EB27762A218aCbB05922fa5703dCF3f'
 ethers-repl> getAddress('c21f0a4a6eb27762a218acbb05922fa5703dcf3f')
 '0xC21F0a4a6EB27762A218aCbB05922fa5703dCF3f'
@@ -38,16 +36,16 @@ ethers-repl> getAddress('c21f0a4a6eb27762a218acbb05922fa5703dcf3f')
 
 Inspection is better
 
-```ts
-ethers-repl> BigNumber.from(1)
-BigNumber { value: 123456 } // instead of _hex: '0x01e240'
+```
+ethers-repl> FixedNumber.fromValue(1, 18)
+FixedNumber { format: undefined, value: "0.000000000000000001" }
 ```
 
 Also there are `dai` and `weth` contracts
 
-```ts
-ethers-repl> await dai.balanceOf('vitalik.eth')
-BigNumber { value: "2501000000000000000000" }
+```
+ethers-repl> await dai.balanceOf("vitalik.eth")
+555508493698012633714742n
 ```
 
 Get a vanity wallet real quick!

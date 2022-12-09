@@ -1,5 +1,5 @@
 const ethers = require("ethers");
-const { id, hexZeroPad } = require("ethers/lib/utils");
+const { id, zeroPadValue } = require("ethers");
 
 module.exports = function () {
   function wordify(x, stripFirst) {
@@ -39,10 +39,10 @@ module.exports = function () {
 
   // vanity(startsWith('f')) => returns ethers.Wallet with address 0xf...
   function vanity(isWalletOkay, loopIterations = 100) {
-    let sk = ethers.BigNumber.from(ethers.utils.randomBytes(32));
+    let sk = ethers.getBigInt(ethers.hexlify(ethers.randomBytes(32)));
 
     while (true) {
-      const wallet = new ethers.Wallet(sk.toHexString());
+      const wallet = new ethers.Wallet("0x" + sk.toString(16));
       if (isWalletOkay(wallet)) {
         return wallet;
       }
@@ -52,7 +52,7 @@ module.exports = function () {
         );
       }
       loopIterations--;
-      sk = sk.add(1);
+      sk = sk + 1n;
     }
   }
 
@@ -63,7 +63,7 @@ module.exports = function () {
     if (!str.startsWith("0x")) {
       str = "0x" + str.toLowerCase();
     }
-    if (!ethers.utils.isHexString(str)) {
+    if (!ethers.isHexString(str)) {
       throw new Error("must be a hex string");
     }
     return (wallet) => wallet.address.toLowerCase().startsWith(str);
@@ -82,7 +82,7 @@ module.exports = function () {
   }
 
   function bytesN(n, val) {
-    return hexZeroPad(ethers.BigNumber.from(val).toHexString(), n);
+    return zeroPadValue("0x" + ethers.getBigInt(val).toString(16), n);
   }
 
   return {

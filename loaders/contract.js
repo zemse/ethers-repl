@@ -1,6 +1,11 @@
 const ethers = require("ethers");
 
 module.exports = function () {
+  const AL_CHEMY = "BlFofLhaR2b18O08NFxUKPdBjHjRCj4P";
+  const mainnet = new ethers.JsonRpcProvider(
+    `https://eth-mainnet.alchemyapi.io/v2/${AL_CHEMY}`
+  );
+
   const contracts = {
     // TODO allow providing custom contracts for custom contracts
     // TODO use a custom provider (JSON RPC URL or provider object)
@@ -8,12 +13,12 @@ module.exports = function () {
     dai: new ethers.Contract(
       "0x6B175474E89094C44Da98b954EedeAC495271d0F",
       erc20Abi,
-      ethers.getDefaultProvider()
+      mainnet
     ),
     weth: new ethers.Contract(
       "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
       wethAbi,
-      ethers.getDefaultProvider()
+      mainnet
     ),
   };
   return { contracts, ...contracts };
@@ -191,11 +196,12 @@ var erc20Abi = [
     stateMutability: "view",
     type: "function",
   },
-  {
-    payable: true,
-    stateMutability: "payable",
-    type: "fallback",
-  },
+  // TODO uncomment once supported in ethers v6
+  // {
+  //   payable: true,
+  //   stateMutability: "payable",
+  //   type: "fallback",
+  // },
   {
     anonymous: false,
     inputs: [
@@ -355,7 +361,7 @@ var wethAbi = [
     stateMutability: "view",
     type: "function",
   },
-  { payable: true, stateMutability: "payable", type: "fallback" },
+  // { payable: true, stateMutability: "payable", type: "fallback" },
   {
     anonymous: false,
     inputs: [

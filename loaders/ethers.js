@@ -9,12 +9,6 @@ module.exports = function () {
   }
 
   // TODO fix color in console.log
-  ethers.BigNumber.prototype[inspect.custom] = function () {
-    return `BigNumber { value: ${S(this.toString())}, hex: ${S(
-      this.toHexString()
-    )} }`;
-  };
-
   ethers.FixedNumber.prototype[inspect.custom] = function () {
     return `FixedNumber { format: ${S(this.format.name)}, value: ${S(
       this.toString()
@@ -38,8 +32,5 @@ module.exports = function () {
   return {
     ethers,
     ...ethers,
-    ...ethers.utils,
-    ...ethers.providers,
-    ...ethers.constants,
   };
 };

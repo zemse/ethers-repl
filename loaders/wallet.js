@@ -16,7 +16,7 @@ module.exports = function () {
       const walletJson = fs.readJSONSync(`${_walletDirPath}/${file}`);
       if (walletJson.address) {
         addresses.push({
-          address: ethers.utils.getAddress(walletJson.address),
+          address: ethers.getAddress(walletJson.address),
           jsonFile: `${_walletDirPath}/${file}`,
         });
       }
