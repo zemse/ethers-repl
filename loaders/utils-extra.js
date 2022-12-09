@@ -1,5 +1,5 @@
 const ethers = require("ethers");
-const { id } = require("ethers/lib/utils");
+const { id, hexZeroPad } = require("ethers/lib/utils");
 
 module.exports = function () {
   function wordify(x, stripFirst) {
@@ -69,10 +69,30 @@ module.exports = function () {
     return (wallet) => wallet.address.toLowerCase().startsWith(str);
   }
 
+  function bytes32(val) {
+    return bytesN(32, val);
+  }
+
+  function bytes20(val) {
+    return bytesN(20, val);
+  }
+
+  function address(val) {
+    return bytesN(20, val);
+  }
+
+  function bytesN(n, val) {
+    return hexZeroPad(ethers.BigNumber.from(val).toHexString(), n);
+  }
+
   return {
     wordify,
     selector,
     vanity,
     startsWith,
+    bytes32,
+    bytes20,
+    address,
+    bytesN,
   };
 };
