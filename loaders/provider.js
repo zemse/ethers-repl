@@ -5,9 +5,9 @@ module.exports = function () {
   const AL_CHEMY = "BlFofLhaR2b18O08NFxUKPdBjHjRCj4P";
 
   let isProviderErrorPrinted = false;
-  const printProviderError = (e) => {
+  const printProviderError = (name, e) => {
     if (!isProviderErrorPrinted) {
-      console.error(e);
+      console.error(name, e);
       isProviderErrorPrinted = true;
     }
   };
@@ -15,52 +15,32 @@ module.exports = function () {
   const mainnet = new ethers.providers.StaticJsonRpcProvider(
     `https://eth-mainnet.alchemyapi.io/v2/${AL_CHEMY}`
   );
-  mainnet._ready().catch(() => printProviderError());
-
-  const ropsten = new ethers.providers.StaticJsonRpcProvider(
-    `https://eth-ropsten.alchemyapi.io/v2/${AL_CHEMY}`
-  );
-  ropsten._ready().catch(printProviderError);
-
-  const rinkeby = new ethers.providers.StaticJsonRpcProvider(
-    `https://eth-rinkeby.alchemyapi.io/v2/${AL_CHEMY}`
-  );
-  rinkeby._ready().catch(printProviderError);
-
-  const kovan = new ethers.providers.StaticJsonRpcProvider(
-    `https://eth-kovan.alchemyapi.io/v2/${AL_CHEMY}`
-  );
-  kovan._ready().catch(printProviderError);
+  mainnet._ready().catch(printProviderError.bind(null, "mainnet"));
 
   const goerli = new ethers.providers.StaticJsonRpcProvider(
     `https://eth-goerli.alchemyapi.io/v2/${AL_CHEMY}`
   );
-  goerli._ready().catch(printProviderError);
+  goerli._ready().catch(printProviderError.bind(null, "goerli"));
 
   const arbmain = new ethers.providers.StaticJsonRpcProvider(
     `https://arb-mainnet.g.alchemy.com/v2/${AL_CHEMY}`
   );
-  arbmain._ready().catch(printProviderError);
-
-  const arbtest = new ethers.providers.StaticJsonRpcProvider(
-    `https://arb-rinkeby.g.alchemy.com/v2/${AL_CHEMY}`
-  );
-  arbtest._ready().catch(printProviderError);
+  arbmain._ready().catch(printProviderError.bind(null, "arbmain"));
 
   const opmain = new ethers.providers.StaticJsonRpcProvider(
-    `https://arb-rinkeby.g.alchemy.com/v2/${AL_CHEMY}`
+    `https://opt-mainnet.g.alchemy.com/v2/${AL_CHEMY}`
   );
-  opmain._ready().catch(printProviderError);
+  opmain._ready().catch(printProviderError.bind(null, "opmain"));
 
   const optest = new ethers.providers.StaticJsonRpcProvider(
-    `https://opt-kovan.g.alchemy.com/v2/${AL_CHEMY}`
+    `https://opt-goerli.g.alchemy.com/v2/${AL_CHEMY}`
   );
-  optest._ready().catch(printProviderError);
+  optest._ready().catch(printProviderError.bind(null, "optest"));
 
   const matic = new ethers.providers.StaticJsonRpcProvider(
     `https://polygon-mainnet.g.alchemy.com/v2/${AL_CHEMY}`
   );
-  matic._ready().catch(printProviderError);
+  matic._ready().catch(printProviderError.bind(null, "matic"));
 
   // const mainnetWss = new ethers.providers.WebSocketProvider(
   //   `wss://eth-mainnet.alchemyapi.io/v2/${AL_CHEMY}`
@@ -151,16 +131,9 @@ module.exports = function () {
     // TODO allow providing custom providers for custom RPCs
     mainnet,
     m: mainnet,
-    ropsten,
-    r: ropsten,
-    rinkeby,
-    rn: rinkeby,
-    kovan,
-    k: kovan,
     goerli,
     g: goerli,
     arbmain,
-    arbtest,
     opmain,
     optest,
     matic,
