@@ -11,10 +11,12 @@
     "ethers": "./cli.js"
   },
   "dependencies": {
-    "ethers": "^6.0.0-beta-exports.7",
     "fs-extra": "^10.0.0"
   },
   "peerDependencies": {
-    "ethers": ">=5"
+    "ethers": ">=6"
+  },
+  "devDependencies": {
+    "ethers": "^6.0.5"
   }
 }
