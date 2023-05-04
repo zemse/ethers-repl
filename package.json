@@ -6,9 +6,9 @@
   "license": "MIT",
   "private": false,
   "bin": {
-    "ethersrepl": "./cli.js",
-    "ethers-repl": "./cli.js",
-    "ethers": "./cli.js"
+    "ethersrepl": "./cli.js ethersrepl",
+    "ethers-repl": "./cli.js ethers-repl",
+    "ethers": "./cli.js ethers"
   },
   "dependencies": {
     "fs-extra": "^10.0.0"

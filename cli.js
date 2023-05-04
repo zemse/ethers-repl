@@ -15,6 +15,47 @@ const state = {
   ...utilsExtra(),
 };
 
-const myRepl = repl.start("ethers-repl> ");
+// node, cli.js, command name, util name (optional), ...args (optional)
+let [, , commandName, ...args] = process.argv;
 
-Object.assign(myRepl.context, state);
+let result = null;
+if (args.length !== 0) {
+  let _obj = state;
+  let _args = args.slice();
+  while (true) {
+    let [utilName, ...utilArgs] = _args;
+    let valOrFn = _obj[utilName];
+    if (valOrFn instanceof Function) {
+      // run the function
+      result = valOrFn.bind(_obj)(...utilArgs);
+      if (result instanceof Promise) {
+        // print after the promise resolves
+        result.then((res) => {
+          console.log(res);
+        });
+      } else {
+        // print function result right now
+        console.log(result);
+      }
+      break;
+    } else if (typeof valOrFn === "object") {
+      _obj = valOrFn;
+      _args = utilArgs;
+    } else {
+      // print value right now
+      console.log(valOrFn);
+      break;
+    }
+  }
+}
+state.result = result;
+
+if (
+  commandName === "ethersrepl" ||
+  commandName === "ethers-repl" ||
+  args.length === 0
+) {
+  const myRepl = repl.start("ethers-repl> ");
+
+  Object.assign(myRepl.context, state);
+}
