@@ -5,6 +5,7 @@ const wallet = require("./loaders/wallet");
 const provider = require("./loaders/provider");
 const contract = require("./loaders/contract");
 const utilsExtra = require("./loaders/utils-extra");
+const sqrl = require("./loaders/sqrl");
 
 // define available methods and state
 const state = {
@@ -13,6 +14,7 @@ const state = {
   ...provider(),
   ...contract(),
   ...utilsExtra(),
+  ...sqrl(),
 };
 
 // node, cli.js, command name, util name (optional), ...args (optional)
