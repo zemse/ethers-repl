@@ -82,8 +82,13 @@ module.exports = function () {
   }
 
   function bytesN(n, val) {
-    return zeroPadValue("0x" + ethers.getBigInt(val).toString(16), n);
+    let hex = ethers.getBigInt(val).toString(16);
+    if (hex.length % 2 === 1) hex = "0" + hex;
+    return zeroPadValue("0x" + hex, n);
   }
+
+  const hash = ethers.keccak256;
+  const pad = bytes32;
 
   return {
     wordify,
@@ -94,5 +99,7 @@ module.exports = function () {
     bytes20,
     address,
     bytesN,
+    hash,
+    pad,
   };
 };
