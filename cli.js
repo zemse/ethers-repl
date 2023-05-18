@@ -18,7 +18,8 @@ const state = {
 };
 
 // node, cli.js, command name, util name (optional), ...args (optional)
-let [, , commandName, ...args] = process.argv;
+// let [, , commandName, ...args] = process.argv;
+let [, , ...args] = process.argv;
 
 let result = null;
 if (args.length !== 0) {
@@ -52,12 +53,12 @@ if (args.length !== 0) {
 }
 state.result = result;
 
-if (
-  commandName === "ethersrepl" ||
-  commandName === "ethers-repl" ||
-  args.length === 0
-) {
-  const myRepl = repl.start("ethers-repl> ");
+// if (
+//   commandName === "ethersrepl" ||
+//   commandName === "ethers-repl" ||
+//   args.length === 0
+// ) {
+const myRepl = repl.start("ethers-repl> ");
 
-  Object.assign(myRepl.context, state);
-}
+Object.assign(myRepl.context, state);
+// }
