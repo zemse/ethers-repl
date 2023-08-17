@@ -87,6 +87,21 @@ module.exports = function () {
     return zeroPadValue("0x" + hex, n);
   }
 
+  function bits(val) {
+    let result = val.toString(2);
+    const mod = result.length % 8;
+    result = "0".repeat(mod === 0 ? 0 : 8 - mod) + result;
+
+    const bytes = [];
+
+    while (result.length !== 0) {
+      bytes.unshift(result.slice(-8));
+      result = result.slice(0, -8);
+    }
+
+    return bytes;
+  }
+
   const hash = ethers.keccak256;
   const pad = bytes32;
 
@@ -101,5 +116,6 @@ module.exports = function () {
     bytesN,
     hash,
     pad,
+    bits,
   };
 };
