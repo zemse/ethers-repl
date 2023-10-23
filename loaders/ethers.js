@@ -32,5 +32,6 @@ module.exports = function () {
   return {
     ethers,
     ...ethers,
+    v6: ethers,
   };
 };

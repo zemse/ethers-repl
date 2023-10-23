@@ -6,6 +6,7 @@ const provider = require("./loaders/provider");
 const contract = require("./loaders/contract");
 const utilsExtra = require("./loaders/utils-extra");
 const sqrl = require("./loaders/sqrl");
+const ethersv5 = require("./loaders/ethers-v5");
 
 // define available methods and state
 const state = {
@@ -15,6 +16,7 @@ const state = {
   ...contract(),
   ...utilsExtra(),
   ...sqrl(),
+  ...ethersv5(),
 };
 
 // node, cli.js, command name, util name (optional), ...args (optional)
