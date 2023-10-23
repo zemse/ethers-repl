@@ -11,13 +11,13 @@
     "ethers": "./cli.js"
   },
   "dependencies": {
-    "fs-extra": "^10.0.0",
-    "ethers-v5": "npm:ethers@5.7.2"
+    "ethers-v5": "npm:ethers@5.7.2",
+    "fs-extra": "^10.0.0"
   },
   "peerDependencies": {
     "ethers": ">=6"
   },
   "devDependencies": {
-    "ethers": "^6.0.5"
+    "ethers": "^6.8.0"
   }
 }
