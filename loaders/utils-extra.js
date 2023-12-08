@@ -37,6 +37,10 @@ module.exports = function () {
     return id(str).slice(0, 10);
   }
 
+  function random() {
+    return ethers.hexlify(ethers.randomBytes(32));
+  }
+
   // vanity(startsWith('f')) => returns ethers.Wallet with address 0xf...
   function vanity(isWalletOkay, loopIterations = 100) {
     let sk = ethers.getBigInt(ethers.hexlify(ethers.randomBytes(32)));
@@ -108,6 +112,7 @@ module.exports = function () {
   return {
     wordify,
     selector,
+    random,
     vanity,
     startsWith,
     bytes32,
