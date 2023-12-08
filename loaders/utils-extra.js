@@ -37,8 +37,8 @@ module.exports = function () {
     return id(str).slice(0, 10);
   }
 
-  function random() {
-    return ethers.hexlify(ethers.randomBytes(32));
+  function random(n = 32) {
+    return ethers.hexlify(ethers.randomBytes(n));
   }
 
   // vanity(startsWith('f')) => returns ethers.Wallet with address 0xf...
