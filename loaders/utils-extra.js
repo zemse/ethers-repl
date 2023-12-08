@@ -1,5 +1,5 @@
-const ethers = require("ethers");
-const { id, zeroPadValue } = require("ethers");
+const ethers = require("ethers-v6");
+const { id, zeroPadValue } = require("ethers-v6");
 
 module.exports = function () {
   function wordify(x, stripFirst) {

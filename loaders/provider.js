@@ -1,4 +1,4 @@
-const ethers = require("ethers");
+const ethers = require("ethers-v6");
 
 module.exports = function () {
   // TODO take API key from an env variable. (underscore added to prevent simple scrapers)

@@ -4,20 +4,14 @@
   "main": "index.js",
   "author": "Soham Zemse",
   "license": "MIT",
-  "private": false,
   "bin": {
-    "ethersrepl": "./cli.js",
+    "ethers": "./cli.js",
     "ethers-repl": "./cli.js",
-    "ethers": "./cli.js"
+    "ethersrepl": "./cli.js"
   },
   "dependencies": {
     "ethers-v5": "npm:ethers@5.7.2",
+    "ethers-v6": "npm:ethers@6",
     "fs-extra": "^10.0.0"
-  },
-  "peerDependencies": {
-    "ethers": ">=6"
-  },
-  "devDependencies": {
-    "ethers": "^6.8.0"
   }
 }

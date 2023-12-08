@@ -1,5 +1,5 @@
 // based on https://blog.ricmoo.com/sqrl-ing-mnemonic-phrases-b68b2dc1f75b
-const ethers = require("ethers");
+const ethers = require("ethers-v6");
 
 module.exports = function () {
   function sqrlMnemonic(mnemonic, password) {

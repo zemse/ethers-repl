@@ -1,4 +1,4 @@
-const ethers = require("ethers");
+const ethers = require("ethers-v6");
 
 module.exports = function () {
   const AL_CHEMY = "BlFofLhaR2b18O08NFxUKPdBjHjRCj4P";

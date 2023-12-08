@@ -1,5 +1,5 @@
 const os = require("os");
-const ethers = require("ethers");
+const ethers = require("ethers-v6");
 const fs = require("fs-extra"); // TODO get rid of dependency
 
 let _walletDirPath =

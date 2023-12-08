@@ -1,5 +1,5 @@
 const ethers = require("ethers-v5");
-const { id, zeroPadValue } = require("ethers");
+const { id, zeroPadValue } = require("ethers-v6");
 
 module.exports = function () {
   return {

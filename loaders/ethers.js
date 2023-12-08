@@ -1,5 +1,5 @@
 const inspect = require("util").inspect;
-const ethers = require("ethers");
+const ethers = require("ethers-v6");
 
 module.exports = function () {
   // Code taken from https://github.com/ethers-io/website/blob/ce51c7cf3b9c597655d3a710acedc351b517a85a/playground/sandbox.js#L504-L575
